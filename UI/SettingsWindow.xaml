@@ -59,8 +59,8 @@
         <!-- Render Modu -->
         <StackPanel Grid.Row="2" Margin="0,0,0,12">
             <TextBlock Text="Render Modu" FontWeight="SemiBold" Margin="0,0,0,6"/>
-            <RadioButton Content="Overlay — hassas FL-41 renk + opaklık (iş/masaüstü)" IsChecked="{Binding IsOverlayMode}" GroupName="Mode"/>
-            <RadioButton Content="Gamma — donanımsal LUT, fullscreen oyun dostu" IsChecked="{Binding IsGammaMode}" GroupName="Mode"/>
+            <RadioButton x:Name="RbOverlay" Content="Overlay — hassas FL-41 renk + opaklık (iş/masaüstü)" GroupName="Mode" Checked="Overlay_Checked"/>
+            <RadioButton x:Name="RbGamma" Content="Gamma — donanımsal LUT, fullscreen oyun dostu" GroupName="Mode" Checked="Gamma_Checked"/>
         </StackPanel>
 
         <!-- FL-41 Preset -->

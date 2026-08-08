@@ -13,6 +13,9 @@ public partial class SettingsWindow : Window
     InitializeComponent();
     _vm = vm;
     DataContext = _vm;
+    // Mevcut moda göre RadioButton işaretle.
+    if (_vm.Mode == Models.RenderMode.Overlay) RbOverlay.IsChecked = true;
+    else RbGamma.IsChecked = true;
   }
 
   private void Preset_Click(object sender, RoutedEventArgs e)
@@ -20,6 +23,9 @@ public partial class SettingsWindow : Window
     if (sender is FrameworkElement fe && fe.Tag is string hex)
       _vm.SelectedPresetHex = hex;
   }
+
+  private void Overlay_Checked(object sender, RoutedEventArgs e) => _vm.Mode = Models.RenderMode.Overlay;
+  private void Gamma_Checked(object sender, RoutedEventArgs e) => _vm.Mode = Models.RenderMode.Gamma;
 
   private void Close_Click(object sender, RoutedEventArgs e)
   {
