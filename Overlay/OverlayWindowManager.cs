@@ -32,6 +32,10 @@ public sealed class OverlayWindowManager : IDisposable
   public void Show()
   {
     EnsureWindows();
+    foreach (var w in _windows)
+    {
+      try { w.Show(); } catch { }
+    }
     _shown = true;
   }
 

@@ -9,6 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
     <AssemblyName>VisualSnowScreen</AssemblyName>
     <RootNamespace>VisualSnowScreen</RootNamespace>
     <Version>1.0.0</Version>
