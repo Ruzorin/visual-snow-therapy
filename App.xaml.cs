@@ -29,8 +29,10 @@ public partial class App : Application
 
   // Gamma ramp sürücü reset'lerine karşı periyodik yenileme (her 30 sn).
   private System.Threading.Timer? _gammaRefreshTimer;
-  // Monitör yapısı değişimlerini dinleme (overlay yeniden yerleşim).
+  // Monitör yapısı değişimlerini dinleme (overlay yeniden yerleşim) + topmost pekiştirme.
   private System.Windows.Threading.DispatcherTimer? _monitorCheckTimer;
+  // Topmost z-order pekiştirme (önizleme/alt pencere sorunu için, her 3 sn).
+  private System.Windows.Threading.DispatcherTimer? _topmostTimer;
   // 20-20-20 göz molası otomatik hatırlatma (varsayılan 20 dk).
   private System.Windows.Threading.DispatcherTimer? _eyeBreakReminder;
   private bool _eyeBreakReminderShown;
@@ -41,6 +43,9 @@ public partial class App : Application
 
     _settings = new SettingsService();
     _settings.Load();
+
+    // Sistem diline göre i18n tespiti (EN/FR/DE/TR).
+    LocalizationService.Detect();
 
     // Render modu (donanım vs yazılım) — Intel iGPU fallback.
     if (_settings.Current.SoftwareRendering)
@@ -80,13 +85,21 @@ public partial class App : Application
         _ => Current.Dispatcher.Invoke(() => _filter.RefreshGamma()),
         null, TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(30));
 
-    // Monitör değişim kontrolü (her 5 sn, ucuz).
+    // Monitör değişim kontrolü (her 5 sn, ucuz — flicker'sız diff).
     _monitorCheckTimer = new System.Windows.Threading.DispatcherTimer
     {
       Interval = TimeSpan.FromSeconds(5)
     };
     _monitorCheckTimer.Tick += (_, _) => _filter.RefreshLayout();
     _monitorCheckTimer.Start();
+
+    // Topmost z-order pekiştirme (her 3 sn — önizleme/alt pencere üstüne geçmesini engeller).
+    _topmostTimer = new System.Windows.Threading.DispatcherTimer
+    {
+      Interval = TimeSpan.FromSeconds(3)
+    };
+    _topmostTimer.Tick += (_, _) => _filter.ReinforceTopmost();
+    _topmostTimer.Start();
 
     // İlk açılışta ayar panelini göster ki kullanıcı opaklığı ayarlasın.
     ShowSettings();
@@ -96,6 +109,7 @@ public partial class App : Application
   {
     if (_vm == null) return;
     _settingsWindow ??= new SettingsWindow(_vm);
+    _settingsWindow.ReliefRequested += ShowRelief;
     _settingsWindow.Show();
     _settingsWindow.Activate();
   }
@@ -111,8 +125,8 @@ public partial class App : Application
   {
     if (_eyeBreakReminderShown) return;
     _eyeBreakReminderShown = true;
-    var msg = "20 dakika geçti!\n\n20 saniye boyunca ekrandan uzaklaşıp\n20 feet (6m) uzağa bak — gözlerini dinlendir.\n\n(Visual Snow Initiative önerisi)";
-    var result = System.Windows.MessageBox.Show(msg, "20-20-20 Göz Molası",
+    var msg = LocalizationService.S("EyeBreakMsg");
+    var result = System.Windows.MessageBox.Show(msg, LocalizationService.S("EyeBreakTitle"),
       MessageBoxButton.OKCancel, MessageBoxImage.Information);
     _eyeBreakReminderShown = false;
     if (result == MessageBoxResult.OK)
@@ -128,6 +142,7 @@ public partial class App : Application
   {
     _gammaRefreshTimer?.Dispose();
     _monitorCheckTimer?.Stop();
+    _topmostTimer?.Stop();
     _eyeBreakReminder?.Stop();
     _hotkeys?.Dispose();
     _tray?.Dispose();

@@ -36,9 +36,10 @@ public sealed class TrayIconController : IDisposable
 
   private ContextMenuStrip BuildMenu()
   {
+    var L = LocalizationService.S;
     var menu = new ContextMenuStrip();
 
-    var miToggle = new ToolStripMenuItem("Filtre: AÇIK") { CheckOnClick = true };
+    var miToggle = new ToolStripMenuItem(L("FilterOn")) { CheckOnClick = true };
     miToggle.Click += (_, _) =>
     {
       _settings.Current.Enabled = miToggle.Checked;
@@ -48,9 +49,9 @@ public sealed class TrayIconController : IDisposable
     };
     menu.Items.Add(miToggle);
 
-    var miMode = new ToolStripMenuItem("Mod");
-    var miOverlay = new ToolStripMenuItem("Overlay (FL-41 pencere)") { CheckOnClick = true };
-    var miGamma = new ToolStripMenuItem("Gamma (oyun dostu)") { CheckOnClick = true };
+    var miMode = new ToolStripMenuItem(L("Mode"));
+    var miOverlay = new ToolStripMenuItem(L("Overlay")) { CheckOnClick = true };
+    var miGamma = new ToolStripMenuItem(L("Gamma")) { CheckOnClick = true };
     miOverlay.Click += (_, _) => SetMode(RenderMode.Overlay, miOverlay, miGamma);
     miGamma.Click += (_, _) => SetMode(RenderMode.Gamma, miGamma, miOverlay);
     miMode.DropDownItems.AddRange(new ToolStripItem[] { miOverlay, miGamma });
@@ -58,17 +59,17 @@ public sealed class TrayIconController : IDisposable
 
     menu.Items.Add(new ToolStripSeparator());
 
-    var miSettings = new ToolStripMenuItem("Ayarlar...");
+    var miSettings = new ToolStripMenuItem(L("Settings"));
     miSettings.Click += (_, _) => SettingsRequested?.Invoke();
     menu.Items.Add(miSettings);
 
-    var miRelief = new ToolStripMenuItem("Rahatlama (4-7-8 / 20-20-20)...");
+    var miRelief = new ToolStripMenuItem(L("Relief"));
     miRelief.Click += (_, _) => ReliefRequested?.Invoke();
     menu.Items.Add(miRelief);
 
     menu.Items.Add(new ToolStripSeparator());
 
-    var miExit = new ToolStripMenuItem("Çıkış");
+    var miExit = new ToolStripMenuItem(L("Exit"));
     miExit.Click += (_, _) =>
     {
       _settings.Current.Enabled = false;

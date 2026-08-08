@@ -90,6 +90,13 @@ public sealed class FilterController : IDisposable
     }
   }
 
+  /// <summary>Overlay topmost z-order'ı pekiştirir (önizleme/alt pencere sorunu).</summary>
+  public void ReinforceTopmost()
+  {
+    if (_settings.Current is { Enabled: true, Mode: RenderMode.Overlay })
+      _overlay.ReinforceTopmost();
+  }
+
   private static Color ParseColor(string hex)
   {
     try { return (Color)ColorConverter.ConvertFromString(hex); }

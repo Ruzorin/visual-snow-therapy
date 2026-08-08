@@ -1,13 +1,14 @@
 <Window x:Class="VisualSnowScreen.UI.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Visual Snow FL-41 — Ayarlar"
-        Width="380" Height="560"
+        Title="Visual Snow FL-41"
+        Width="380" Height="640"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Background="#1E1E2E"
         ShowInTaskbar="True"
-        Topmost="True">
+        Topmost="True"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="#CDD6F4"/>
@@ -32,10 +33,19 @@
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
+        <Style x:Key="ActionBtn" TargetType="Button">
+            <Setter Property="Padding" Value="0,8"/>
+            <Setter Property="Background" Value="#CBA6F7"/>
+            <Setter Property="Foreground" Value="#1E1E2E"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
     </Window.Resources>
 
     <Grid Margin="16">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -49,23 +59,23 @@
 
         <!-- Başlık -->
         <StackPanel Grid.Row="0" Margin="0,0,0,12">
-            <TextBlock Text="Visual Snow FL-41 Filtresi" FontSize="18" FontWeight="SemiBold" Foreground="#F5C2E7"/>
-            <TextBlock Text="480-520nm mavi-yeşil blokajı · rose-amber" FontSize="11" Foreground="#A6ADC8" Margin="0,2,0,0"/>
+            <TextBlock x:Name="LblTitle" Text="Visual Snow FL-41 Filter" FontSize="18" FontWeight="SemiBold" Foreground="#F5C2E7"/>
+            <TextBlock x:Name="LblSubtitle" Text="480-520nm blue-green block · rose-amber" FontSize="11" Foreground="#A6ADC8" Margin="0,2,0,0"/>
         </StackPanel>
 
         <!-- Filtre aktif -->
-        <CheckBox Grid.Row="1" Content="Filtre AKTİF" IsChecked="{Binding Enabled}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,12"/>
+        <CheckBox Grid.Row="1" x:Name="ChkEnabled" Content="Filter ACTIVE" IsChecked="{Binding Enabled}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,12"/>
 
         <!-- Render Modu -->
         <StackPanel Grid.Row="2" Margin="0,0,0,12">
-            <TextBlock Text="Render Modu" FontWeight="SemiBold" Margin="0,0,0,6"/>
-            <RadioButton x:Name="RbOverlay" Content="Overlay — hassas FL-41 renk + opaklık (iş/masaüstü)" GroupName="Mode" Checked="Overlay_Checked"/>
-            <RadioButton x:Name="RbGamma" Content="Gamma — donanımsal LUT, fullscreen oyun dostu" GroupName="Mode" Checked="Gamma_Checked"/>
+            <TextBlock x:Name="LblRenderMode" Text="Render Mode" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <RadioButton x:Name="RbOverlay" GroupName="Mode" Checked="Overlay_Checked"/>
+            <RadioButton x:Name="RbGamma" GroupName="Mode" Checked="Gamma_Checked"/>
         </StackPanel>
 
         <!-- FL-41 Preset -->
         <StackPanel Grid.Row="3" Margin="0,0,0,12">
-            <TextBlock Text="FL-41 Renk Preset" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBlock x:Name="LblPreset" Text="FL-41 Color Preset" FontWeight="SemiBold" Margin="0,0,0,6"/>
             <ItemsControl ItemsSource="{Binding Presets}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -88,39 +98,43 @@
         </StackPanel>
 
         <!-- Opaklık (Overlay modu) -->
-        <StackPanel Grid.Row="4" Margin="0,0,0,12" IsEnabled="{Binding IsOverlayMode}">
+        <StackPanel Grid.Row="4" x:Name="PanelOpacity" Margin="0,0,0,12" IsEnabled="{Binding IsOverlayMode}">
             <DockPanel Margin="0,0,0,4">
-                <TextBlock Text="Opaklık" FontWeight="SemiBold" DockPanel.Dock="Left"/>
+                <TextBlock x:Name="LblOpacity" Text="Opacity" FontWeight="SemiBold" DockPanel.Dock="Left"/>
                 <TextBlock Text="{Binding OpacityPercent, StringFormat={}{0}%}" DockPanel.Dock="Right" HorizontalAlignment="Right" Foreground="#F5C2E7"/>
             </DockPanel>
-            <Slider Minimum="0" Maximum="255" Value="{Binding Opacity}" TickFrequency="16" IsSnapToTickEnabled="False" SmallChange="1" LargeChange="16"/>
+            <Slider Minimum="0" Maximum="255" Value="{Binding Opacity}" TickFrequency="16" SmallChange="1" LargeChange="16"/>
         </StackPanel>
 
         <!-- Gamma Yoğunluğu (Gamma modu) -->
-        <StackPanel Grid.Row="5" Margin="0,0,0,12" IsEnabled="{Binding IsGammaMode}">
+        <StackPanel Grid.Row="5" x:Name="PanelGamma" Margin="0,0,0,12" IsEnabled="{Binding IsGammaMode}">
             <DockPanel Margin="0,0,0,4">
-                <TextBlock Text="Gamma Yoğunluğu" FontWeight="SemiBold" DockPanel.Dock="Left"/>
+                <TextBlock x:Name="LblGammaIntensity" Text="Gamma Intensity" FontWeight="SemiBold" DockPanel.Dock="Left"/>
                 <TextBlock Text="{Binding GammaPercent, StringFormat={}{0}%}" DockPanel.Dock="Right" HorizontalAlignment="Right" Foreground="#F5C2E7"/>
             </DockPanel>
             <Slider Minimum="0" Maximum="1" Value="{Binding GammaIntensity}" TickFrequency="0.05" SmallChange="0.01" LargeChange="0.1"/>
-            <TextBlock Text="Not: Windows Night Light kapalı olmalı." FontSize="10" Foreground="#A6ADC8" Margin="0,4,0,0"/>
+            <TextBlock x:Name="LblNightLightNote" Text="Note: Windows Night Light must be off." FontSize="10" Foreground="#A6ADC8" Margin="0,4,0,0"/>
         </StackPanel>
 
         <!-- AutoStart -->
-        <CheckBox Grid.Row="6" Content="Windows açılışında otomatik başlat" IsChecked="{Binding AutoStart}" Margin="0,0,0,12"/>
+        <CheckBox Grid.Row="6" x:Name="ChkAutoStart" Content="Start automatically with Windows" IsChecked="{Binding AutoStart}" Margin="0,0,0,12"/>
+
+        <!-- Relief erişim butonu -->
+        <Button Grid.Row="7" x:Name="BtnOpenRelief" Style="{StaticResource ActionBtn}" Content="Open relief tools" Click="OpenRelief_Click" Margin="0,0,0,12"/>
 
         <!-- Kısayollar -->
-        <Border Grid.Row="7" Background="#313244" CornerRadius="6" Padding="10" Margin="0,0,0,8">
+        <Border Grid.Row="8" Background="#313244" CornerRadius="6" Padding="10" Margin="0,0,0,8">
             <StackPanel>
-                <TextBlock Text="Kısayollar" FontWeight="SemiBold" Margin="0,0,0,4"/>
-                <TextBlock Text="Ctrl+Alt+F  —  Filtre aç/kapa" FontSize="11" Margin="0,2,0,0"/>
-                <TextBlock Text="Ctrl+Alt+O  —  Ayarlar paneli" FontSize="11" Margin="0,2,0,0"/>
-                <TextBlock Text="Ctrl+Alt+M  —  Mod değiştir" FontSize="11" Margin="0,2,0,0"/>
+                <TextBlock x:Name="LblHotkeys" Text="Hotkeys" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <TextBlock x:Name="LblHkToggle" Text="Ctrl+Alt+F  —  Toggle filter" FontSize="11" Margin="0,2,0,0"/>
+                <TextBlock x:Name="LblHkSettings" Text="Ctrl+Alt+O  —  Settings panel" FontSize="11" Margin="0,2,0,0"/>
+                <TextBlock x:Name="LblHkMode" Text="Ctrl+Alt+M  —  Switch mode" FontSize="11" Margin="0,2,0,0"/>
+                <TextBlock x:Name="LblHkRelief" Text="Ctrl+Alt+R  —  Relief tools" FontSize="11" Margin="0,2,0,0"/>
             </StackPanel>
         </Border>
 
         <!-- Kapat -->
-        <Button Grid.Row="8" Content="Kapat" Padding="0,8" HorizontalAlignment="Stretch" Click="Close_Click"
+        <Button Grid.Row="9" x:Name="BtnClose" Content="Close" Padding="0,8" HorizontalAlignment="Stretch" Click="Close_Click"
                 Background="#313244" Foreground="#CDD6F4" BorderBrush="#45475A"/>
     </Grid>
 </Window>
