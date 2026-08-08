@@ -137,6 +137,42 @@ public static class LocalizationService
       ("ColorPreset", AppCulture.Spanish) => "Preset de color FL-41",
       ("ColorPreset", _) => "FL-41 Color Preset",
 
+      ("IndoorName", AppCulture.Turkish) => "Indoor FL-41",
+      ("IndoorName", AppCulture.French) => "FL-41 Intérieur",
+      ("IndoorName", AppCulture.German) => "FL-41 Innenraum",
+      ("IndoorName", AppCulture.Spanish) => "FL-41 Interiores",
+      ("IndoorName", _) => "Indoor FL-41",
+
+      ("IndoorDesc", AppCulture.Turkish) => "Hafif gül kurusu — ofis ve ekran için",
+      ("IndoorDesc", AppCulture.French) => "Rose léger — pour bureau et écran",
+      ("IndoorDesc", AppCulture.German) => "Leichtes Rosé — für Büro und Bildschirm",
+      ("IndoorDesc", AppCulture.Spanish) => "Rosa claro — para oficina y pantalla",
+      ("IndoorDesc", _) => "Light rose tint — for office and screen use",
+
+      ("WarmName", AppCulture.Turkish) => "Warm FL-41",
+      ("WarmName", AppCulture.French) => "FL-41 Chaud",
+      ("WarmName", AppCulture.German) => "FL-41 Warm",
+      ("WarmName", AppCulture.Spanish) => "FL-41 Cálido",
+      ("WarmName", _) => "Warm FL-41",
+
+      ("WarmDesc", AppCulture.Turkish) => "Sıcak rose-amber — gerçek FL-41 tonu",
+      ("WarmDesc", AppCulture.French) => "Rose-ambre chaud — véritable teinte FL-41",
+      ("WarmDesc", AppCulture.German) => "Warmes Rosé-Bernstein — echte FL-41 Nuance",
+      ("WarmDesc", AppCulture.Spanish) => "Rosa-ámbar cálido — tono FL-41 auténtico",
+      ("WarmDesc", _) => "Warm rose-amber — true FL-41 spectrum",
+
+      ("DeepName", AppCulture.Turkish) => "Deep FL-41",
+      ("DeepName", AppCulture.French) => "FL-41 Intense",
+      ("DeepName", AppCulture.German) => "FL-41 Intensiv",
+      ("DeepName", AppCulture.Spanish) => "FL-41 Intenso",
+      ("DeepName", _) => "Deep FL-41",
+
+      ("DeepDesc", AppCulture.Turkish) => "Yoğun — koyu ortam / gece",
+      ("DeepDesc", AppCulture.French) => "Intense — environnement sombre / nuit",
+      ("DeepDesc", AppCulture.German) => "Intensiv — dunkle Umgebung / Nacht",
+      ("DeepDesc", AppCulture.Spanish) => "Intenso — ambiente oscuro / noche",
+      ("DeepDesc", _) => "High density — dark room / night use",
+
       ("Opacity", AppCulture.Turkish) => "Opaklık",
       ("Opacity", AppCulture.French) => "Opacité",
       ("Opacity", AppCulture.German) => "Deckkraft",
@@ -203,42 +239,6 @@ public static class LocalizationService
       ("Language", AppCulture.Spanish) => "Idioma:",
       ("Language", _) => "Language:",
 
-      // Presets
-      ("IndoorName", AppCulture.Turkish) => "Indoor FL-41",
-      ("IndoorName", AppCulture.French) => "FL-41 Intérieur",
-      ("IndoorName", AppCulture.German) => "FL-41 Innen",
-      ("IndoorName", AppCulture.Spanish) => "FL-41 Interior",
-      ("IndoorName", _) => "Indoor FL-41",
-
-      ("IndoorDesc", AppCulture.Turkish) => "Hafif gül kurusu — ofis ve ekran için",
-      ("IndoorDesc", AppCulture.French) => "Rose léger — bureau et écran",
-      ("IndoorDesc", AppCulture.German) => "Helles Rose — Büro und Bildschirm",
-      ("IndoorDesc", AppCulture.Spanish) => "Rosa claro — oficina y pantalla",
-      ("IndoorDesc", _) => "Light rose — office and screen",
-
-      ("WarmName", AppCulture.Turkish) => "Warm FL-41",
-      ("WarmName", AppCulture.French) => "FL-41 Chaud",
-      ("WarmName", AppCulture.German) => "FL-41 Warm",
-      ("WarmName", AppCulture.Spanish) => "FL-41 Cálido",
-      ("WarmName", _) => "Warm FL-41",
-
-      ("WarmDesc", AppCulture.Turkish) => "Sıcak rose-amber — gerçek FL-41 tonu",
-      ("WarmDesc", AppCulture.French) => "Rose-ambre chaud — vrai ton FL-41",
-      ("WarmDesc", AppCulture.German) => "Warmes Rose-Bernstein — echter FL-41 Ton",
-      ("WarmDesc", AppCulture.Spanish) => "Rosa-ámbar cálido — tono FL-41 real",
-      ("WarmDesc", _) => "Warm rose-amber — true FL-41 tone",
-
-      ("DeepName", AppCulture.Turkish) => "Deep FL-41",
-      ("DeepName", AppCulture.French) => "FL-41 Profond",
-      ("DeepName", AppCulture.German) => "FL-41 Tief",
-      ("DeepName", AppCulture.Spanish) => "FL-41 Profundo",
-      ("DeepName", _) => "Deep FL-41",
-
-      ("DeepDesc", AppCulture.Turkish) => "Yoğun — koyu ortam / gece",
-      ("DeepDesc", AppCulture.French) => "Intense — environnement sombre / nuit",
-      ("DeepDesc", AppCulture.German) => "Intensiv — dunkle Umgebung / Nacht",
-      ("DeepDesc", AppCulture.Spanish) => "Intenso — entorno oscuro / noche",
-      ("DeepDesc", _) => "Intense — dark environment / night",
 
       // Hotkey labels
       ("HkToggle", AppCulture.Turkish) => "Ctrl+Alt+F  —  Filtre aç/kapa",

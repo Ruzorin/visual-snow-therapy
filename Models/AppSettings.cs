@@ -21,19 +21,21 @@ public enum RenderMode
 /// </summary>
 public static class Fl41Presets
 {
-    public sealed record Preset(string Name, string Hex, byte DefaultAlpha, string Description)
+    public sealed record Preset(string Key, string Hex, byte DefaultAlpha)
     {
         public Color Color => (Color)ColorConverter.ConvertFromString(Hex);
+        public string Name => Services.LocalizationService.S(Key + "Name");
+        public string Description => Services.LocalizationService.S(Key + "Desc");
     }
 
     /// <summary>Indoor FL-41 — hafif rose, ofis/ekran için (~%25 blokaj hissi).</summary>
-    public static readonly Preset Indoor = new("Indoor FL-41", "#E0A9AF", 90, "Hafif gül kurusu — ofis ve ekran için");
+    public static readonly Preset Indoor = new("Indoor", "#E0A9AF", 90);
 
     /// <summary>Warm FL-41 — daha sıcak, turuncu-kahve alt tonlu (gerçek FL-41'e yakın).</summary>
-    public static readonly Preset Warm = new("Warm FL-41", "#D98C8C", 110, "Sıcak rose-amber — gerçek FL-41 tonu");
+    public static readonly Preset Warm = new("Warm", "#D98C8C", 110);
 
     /// <summary>Deep FL-41 — yoğun, koyu ortam / gece kullanımı.</summary>
-    public static readonly Preset Deep = new("Deep FL-41", "#C97F7F", 140, "Yoğun — koyu ortam / gece");
+    public static readonly Preset Deep = new("Deep", "#C97F7F", 140);
 
     /// <summary>Tüm preset listesi (UI seçimi için).</summary>
     public static readonly Preset[] All = { Indoor, Warm, Deep };

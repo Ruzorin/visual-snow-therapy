@@ -196,7 +196,12 @@ public sealed class SettingsViewModel : INotifyPropertyChanged
     }
   }
 
+  public void RefreshPresets()
+  {
+    OnPropertyChanged(nameof(Presets));
+  }
+
   public event PropertyChangedEventHandler? PropertyChanged;
-  private void OnPropertyChanged([CallerMemberName] string? name = null)
+  public void OnPropertyChanged([CallerMemberName] string? name = null)
       => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }

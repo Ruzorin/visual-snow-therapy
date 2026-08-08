@@ -298,6 +298,10 @@ public partial class SettingsWindow : Window
     {
       LocalizationService.Set(culture);
       ApplyLocalization();
+      if (DataContext is SettingsViewModel vm)
+      {
+        vm.RefreshPresets();
+      }
     }
   }
 
