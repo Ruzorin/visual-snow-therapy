@@ -119,8 +119,16 @@
         <!-- AutoStart -->
         <CheckBox Grid.Row="6" x:Name="ChkAutoStart" Content="Start automatically with Windows" IsChecked="{Binding AutoStart}" Margin="0,0,0,12"/>
 
-        <!-- Relief erişim butonu -->
-        <Button Grid.Row="7" x:Name="BtnOpenRelief" Style="{StaticResource ActionBtn}" Content="Open relief tools" Click="OpenRelief_Click" Margin="0,0,0,12"/>
+        <!-- Relief erişim butonu + Dil seçici -->
+        <DockPanel Grid.Row="7" Margin="0,0,0,12">
+            <Button x:Name="BtnOpenRelief" Style="{StaticResource ActionBtn}" Content="Open relief tools" Click="OpenRelief_Click" DockPanel.Dock="Left" Width="180"/>
+            <ComboBox x:Name="CmbLanguage" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="140" Background="#313244" Foreground="#CDD6F4" SelectionChanged="Language_Changed">
+                <ComboBoxItem Content="English" Tag="English"/>
+                <ComboBoxItem Content="Français" Tag="French"/>
+                <ComboBoxItem Content="Deutsch" Tag="German"/>
+                <ComboBoxItem Content="Türkçe" Tag="Turkish"/>
+            </ComboBox>
+        </DockPanel>
 
         <!-- Kısayollar -->
         <Border Grid.Row="8" Background="#313244" CornerRadius="6" Padding="10" Margin="0,0,0,8">
