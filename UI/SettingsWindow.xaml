@@ -307,23 +307,15 @@
                         <!-- NORT Therapy -->
                         <StackPanel x:Name="PanelNort" VerticalAlignment="Top" Visibility="Collapsed">
                             <TextBlock x:Name="TxtNortTitle" Text="NORT: Göz Takibi ve Sıçrama Egzersizleri" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="TxtNortDesc1" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,12">
-                                <Run Text="Neuro-Optometric Rehabilitation Therapy (NORT), Visual Snow Sendromundaki okülomotor yetersizlikleri hedefler. Göz takibi (Smooth Pursuit) ve sıçrama (Saccade) tekniklerini kullanarak beynin görsel verileri daha rahat işlemesini sağlar."/>
-                                <LineBreak/><LineBreak/>
-                                <Run Foreground="#A0A0A0" Text="Shidlofsky vd. tarafından gerçekleştirilen bağımsız ve VSI destekli çalışmalar okulomotor disfonksiyon düzeltmelerinin semptomlarda iyileşme sağlayabildiğini belirtmektedir." />
-                            </TextBlock>
-                            <TextBlock x:Name="TxtNortDesc2" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,16">
-                                <Run Text="Bu egzersiz toplam 3 dakika sürecek (1.5 dk göz takibi + 1.5 dk sıçrama). Süre bitiminde nörolojik yorgunluk ('rebound') olmaması için güvenli şekilde kapanır."/>
-                            </TextBlock>
+                            <TextBlock x:Name="TxtNortDesc1" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,12" Text=""/>
+                            <TextBlock x:Name="TxtNortDesc2" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,16" Text=""/>
                             <Button x:Name="BtnNortStart" Style="{StaticResource ActionBtn}" Content="NORT Egzersizini Başlat" Click="Nort_Start" HorizontalAlignment="Left"/>
                         </StackPanel>
 
                         <!-- Habituation (deneysel) -->
                         <StackPanel x:Name="PanelHabituation" VerticalAlignment="Top" Visibility="Collapsed">
                             <TextBlock x:Name="TxtHabitTitle" Text="Alışma (Habituation) — Deneysel" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                            <TextBlock x:Name="TxtHabitDesc" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,12">
-                                <Run Text="Bazı hastalar, kontrollü şekilde statik benzeri uyarana kısa süre maruz kalarak beynin görsel hiperaktivitesinin azaldığını bildiriyor (nöroplastisite prensibi)."/>
-                            </TextBlock>
+                            <TextBlock x:Name="TxtHabitDesc" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,12" Text=""/>
                             <TextBlock x:Name="TxtHabitDuration" Text="Süre seç:" FontSize="12" FontWeight="SemiBold" Margin="0,0,0,6"/>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
                                 <RadioButton x:Name="Habit30" Content="30 sn" Margin="0,0,16,0" IsChecked="True"/>
@@ -337,20 +329,12 @@
                         <!-- Bilgi -->
                         <StackPanel x:Name="PanelInfo" VerticalAlignment="Top" Visibility="Collapsed">
                             <TextBlock x:Name="TxtInfoTitle" Text="Visual Snow Syndrome Hakkında" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                            <TextBlock x:Name="TxtInfoDesc1" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,10">
-                                <Run Text="VSS, tüm görme alanında sürekli 'kar' veya statik görme ile karakterize nörolojik bir durumdur. Gözler açık veya kapalı fark etmez — 7/24 vardır."/>
-                            </TextBlock>
-                            <TextBlock x:Name="TxtInfoDesc2" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,10">
-                                <Run Text="Eşlik eden semptomlar: palinopsi (artık görüntüler), fotofobi (ışık hassasiyeti), entoptik fenomenler, noktalı gece körlüğü, tinnitus."/>
-                            </TextBlock>
+                            <TextBlock x:Name="TxtInfoDesc1" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,10" Text=""/>
+                            <TextBlock x:Name="TxtInfoDesc2" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,10" Text=""/>
                             <TextBlock x:Name="TxtInfoFl41Title" Text="Fotofobi için FL-41" FontSize="13" FontWeight="SemiBold" Foreground="#F5C2E7" Margin="0,4,0,4"/>
-                            <TextBlock x:Name="TxtInfoFl41Desc" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,10">
-                                <Run Text="FL-41 rose-amber camlar 480-520nm mavi-yeşil ışığı bloke eder. Klinik araştırmalar fotofobi yollarındaki (S1, S2, insula, ACC) beyin aktivasyonunu anlamlı ölçüde azalttığını gösteriyor. Bu uygulama aynı etkiyi ekran katmanı olarak taklit eder."/>
-                            </TextBlock>
+                            <TextBlock x:Name="TxtInfoFl41Desc" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Margin="0,0,0,10" Text=""/>
                             <TextBlock x:Name="TxtInfoTipsTitle" Text="Günlük Yönetim İpuçları" FontSize="13" FontWeight="SemiBold" Foreground="#F5C2E7" Margin="0,4,0,4"/>
-                            <TextBlock x:Name="TxtInfoTips" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify">
-                                <Run Text="• Düzenli uyku (melatonin döngüsü)&#x0a;• Stres yönetimi: meditasyon, derin nefes&#x0a;• Kafein/alkol tüketimini azalt&#x0a;• Migren komorbiditesini tedavi et&#x0a;• FL-41 camlar + ekran filtresi (bu app)&#x0a;• 20-20-20 kuralı ile düzenli göz molası&#x0a;• Yüksek kontrast/strobe ışıktan kaçın"/>
-                            </TextBlock>
+                            <TextBlock x:Name="TxtInfoTips" TextWrapping="Wrap" FontSize="12" TextAlignment="Justify" Text=""/>
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>

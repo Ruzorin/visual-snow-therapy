@@ -360,8 +360,17 @@ public static class LocalizationService
       ("reliefNortStart", AppCulture.Turkish) => "NORT Egzersizini Başlat",
       ("reliefNortStart", _) => "Start NORT Exercise",
 
+      ("reliefNortDesc1", AppCulture.Turkish) => "Neuro-Optometric Rehabilitation Therapy (NORT), Visual Snow Sendromundaki okülomotor yetersizlikleri hedefler. Göz takibi (Smooth Pursuit) ve sıçrama (Saccade) tekniklerini kullanarak beynin görsel verileri daha rahat işlemesini sağlar.\n\nShidlofsky vd. tarafından gerçekleştirilen bağımsız ve VSI destekli çalışmalar okulomotor disfonksiyon düzeltmelerinin semptomlarda iyileşme sağlayabildiğini belirtmektedir.",
+      ("reliefNortDesc1", _) => "Neuro-Optometric Rehabilitation Therapy (NORT) targets oculomotor deficiencies in Visual Snow Syndrome. It uses Smooth Pursuit and Saccade techniques to help the brain process visual data more comfortably.\n\nIndependent and VSI-supported studies by Shidlofsky et al. indicate that oculomotor dysfunction corrections can lead to symptom improvement.",
+
+      ("reliefNortDesc2", AppCulture.Turkish) => "Bu egzersiz toplam 3 dakika sürecek (1.5 dk göz takibi + 1.5 dk sıçrama). Süre bitiminde nörolojik yorgunluk ('rebound') olmaması için güvenli şekilde kapanır.",
+      ("reliefNortDesc2", _) => "This exercise lasts 3 minutes total (1.5 min pursuit + 1.5 min saccades). It closes safely at the end to prevent neurological fatigue ('rebound').",
+
       ("reliefHabitTitle", AppCulture.Turkish) => "Alışma (Habituation) — Deneysel",
       ("reliefHabitTitle", _) => "Habituation — Experimental",
+
+      ("reliefHabitDesc", AppCulture.Turkish) => "Bazı hastalar, kontrollü şekilde statik benzeri uyarana kısa süre maruz kalarak beynin görsel hiperaktivitesinin azaldığını bildiriyor (nöroplastisite prensibi).",
+      ("reliefHabitDesc", _) => "Some patients report that brief, controlled exposure to static-like stimuli reduces visual hyperactivity in the brain (neuroplasticity principle).",
 
       ("reliefHabitDuration", AppCulture.Turkish) => "Süre seç:",
       ("reliefHabitDuration", AppCulture.French) => "Choisir la durée:",
@@ -383,6 +392,45 @@ public static class LocalizationService
 
       ("reliefInfoTipsTitle", AppCulture.Turkish) => "Günlük Yönetim İpuçları",
       ("reliefInfoTipsTitle", _) => "Daily Management Tips",
+
+      ("reliefInfoDesc1", AppCulture.Turkish) => "VSS, tüm görme alanında sürekli 'kar' veya statik görme ile karakterize nörolojik bir durumdur. Gözler açık veya kapalı fark etmez — 7/24 vardır.",
+      ("reliefInfoDesc1", _) => "VSS is a neurological condition characterized by continuous 'snow' or static vision across the entire visual field. Eyes open or closed — it's there 24/7.",
+
+      ("reliefInfoDesc2", AppCulture.Turkish) => "Eşlik eden semptomlar: palinopsi (artık görüntüler), fotofobi (ışık hassasiyeti), entoptik fenomenler, noktalı gece körlüğü, tinnitus.",
+      ("reliefInfoDesc2", _) => "Accompanying symptoms: palinopsia (after-images), photophobia (light sensitivity), entoptic phenomena, nyctalopia (night blindness), tinnitus.",
+
+      ("reliefInfoFl41Desc", AppCulture.Turkish) => "FL-41 rose-amber camlar 480-520nm mavi-yeşil ışığı bloke eder. Klinik araştırmalar fotofobi yollarındaki (S1, S2, insula, ACC) beyin aktivasyonunu anlamlı ölçüde azalttığını gösteriyor. Bu uygulama aynı etkiyi ekran katmanı olarak taklit eder.",
+      ("reliefInfoFl41Desc", _) => "FL-41 rose-amber lenses block 480-520nm blue-green light. Clinical studies show significant reduction in brain activation in photophobia pathways (S1, S2, insula, ACC). This app mimics the same effect as a screen overlay.",
+
+      ("reliefInfoTips", AppCulture.Turkish) => "• Düzenli uyku (melatonin döngüsü)\n• Stres yönetimi: meditasyon, derin nefes\n• Kafein/alkol tüketimini azalt\n• Migren komorbiditesini tedavi et\n• FL-41 camlar + ekran filtresi (bu app)\n• 20-20-20 kuralı ile düzenli göz molası\n• Yüksek kontrast/strobe ışıktan kaçın",
+      ("reliefInfoTips", _) => "• Regular sleep (melatonin cycle)\n• Stress management: meditation, deep breathing\n• Reduce caffeine/alcohol\n• Treat migraine comorbidity\n• FL-41 lenses + screen filter (this app)\n• Regular eye breaks with 20-20-20 rule\n• Avoid high contrast/strobe light",
+
+      ("reliefBack", AppCulture.Turkish) => "← Geri",
+      ("reliefBack", AppCulture.French) => "← Retour",
+      ("reliefBack", AppCulture.German) => "← Zurück",
+      ("reliefBack", AppCulture.Spanish) => "← Volver",
+      ("reliefBack", _) => "← Back",
+
+      ("reliefBreathInhale", AppCulture.Turkish) => "Nefes Al",
+      ("reliefBreathInhale", _) => "Inhale",
+
+      ("reliefBreathHold", AppCulture.Turkish) => "Tut",
+      ("reliefBreathHold", AppCulture.French) => "Retenir",
+      ("reliefBreathHold", AppCulture.German) => "Halten",
+      ("reliefBreathHold", AppCulture.Spanish) => "Mantener",
+      ("reliefBreathHold", _) => "Hold",
+
+      ("reliefBreathExhale", AppCulture.Turkish) => "Ver",
+      ("reliefBreathExhale", AppCulture.French) => "Expirer",
+      ("reliefBreathExhale", AppCulture.German) => "Ausatmen",
+      ("reliefBreathExhale", AppCulture.Spanish) => "Exhalar",
+      ("reliefBreathExhale", _) => "Exhale",
+
+      ("reliefBreathDone", AppCulture.Turkish) => "Tamamlandı",
+      ("reliefBreathDone", AppCulture.French) => "Terminé",
+      ("reliefBreathDone", AppCulture.German) => "Fertig",
+      ("reliefBreathDone", AppCulture.Spanish) => "Completado",
+      ("reliefBreathDone", _) => "Complete",
 
       ("reliefSourcesTitle", AppCulture.Turkish) => "Kaynaklar (resmi araştırma):",
       ("reliefSourcesTitle", _) => "Sources (official research):",

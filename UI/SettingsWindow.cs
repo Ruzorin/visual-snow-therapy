@@ -92,16 +92,23 @@ public partial class SettingsWindow : Window
     TxtBreakSeconds.Text = L("reliefBreakSeconds") ?? "saniye";
 
     TxtNortTitle.Text = L("reliefNortTitle") ?? "NORT: Göz Takibi ve Sıçrama Egzersizleri";
+    TxtNortDesc1.Text = L("reliefNortDesc1") ?? "";
+    TxtNortDesc2.Text = L("reliefNortDesc2") ?? "";
     BtnNortStart.Content = L("reliefNortStart") ?? "NORT Egzersizini Başlat";
 
     TxtHabitTitle.Text = L("reliefHabitTitle") ?? "Alışma (Habituation) — Deneysel";
+    TxtHabitDesc.Text = L("reliefHabitDesc") ?? "";
     TxtHabitDuration.Text = L("reliefHabitDuration") ?? "Süre seç:";
     TxtHabitWarning.Text = L("reliefHabitWarning") ?? "Uyarı: Bu deneysel bir tekniktir. Rahatsızlık artarsa hemen durdurun.";
     BtnHabitStart.Content = L("reliefHabitStart") ?? "Statik Ekranı Göster";
 
     TxtInfoTitle.Text = L("reliefInfoTitle") ?? "Visual Snow Syndrome Hakkında";
+    TxtInfoDesc1.Text = L("reliefInfoDesc1") ?? "";
+    TxtInfoDesc2.Text = L("reliefInfoDesc2") ?? "";
     TxtInfoFl41Title.Text = L("reliefInfoFl41Title") ?? "Fotofobi için FL-41";
+    TxtInfoFl41Desc.Text = L("reliefInfoFl41Desc") ?? "";
     TxtInfoTipsTitle.Text = L("reliefInfoTipsTitle") ?? "Günlük Yönetim İpuçları";
+    TxtInfoTips.Text = L("reliefInfoTips") ?? "";
 
     TxtSourceTitle.Text = L("reliefSourcesTitle") ?? "Kaynaklar (resmi araştırma):";
     TxtMedicalDisclaimer.Text = L("reliefMedicalDisclaimer") ?? "Tıbbi tavsiye yerine geçmez. Semptomlar için nöro-oftalmoloğa başvurun.";
