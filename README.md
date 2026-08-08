@@ -2,6 +2,28 @@
 
 A lightweight Windows desktop screen-layer application that transforms your screen into the full **FL-41 (rose-amber)** color spectrum for **Visual Snow Syndrome (VSS)** and **photophobia** relief. Built with C# and WPF (.NET 8).
 
+## 📸 Screenshots & UI Showcase
+
+<p align="center">
+  <img src="image/photo_2026-08-08_05-55-53.jpg" alt="Visual Snow Therapy Main Settings" width="800"/><br/>
+  <em>Main FL-41 Screen Filter Controls & Smart Noise Option</em>
+</p>
+
+<p align="center">
+  <img src="image/photo_2026-08-08_05-56-20.jpg" alt="Integrated Relief Panel" width="800"/><br/>
+  <em>Integrated Relief & Mindfulness Dashboard (4-7-8 Breathing, 20-20-20 Eye Break, NORT Therapy, Habituation)</em>
+</p>
+
+<p align="center">
+  <img src="image/photo_2026-08-08_05-59-16.jpg" alt="NORT Tracking Therapy" width="800"/><br/>
+  <em>Neuro-Optometric Rehabilitation Therapy (NORT) Smooth Pursuit & Saccade Training</em>
+</p>
+
+<p align="center">
+  <img src="image/photo_2026-08-08_06-03-23.jpg" alt="4-7-8 Breathing & Eye Care" width="800"/><br/>
+  <em>Interactive Guided 4-7-8 Breathing Circle</em>
+</p>
+
 It also includes evidence-based relaxation tools: **4-7-8 breathing**, **20-20-20 eye breaks**, an experimental **habituation** screen, and VSS awareness info with official research source links.
 
 ---
