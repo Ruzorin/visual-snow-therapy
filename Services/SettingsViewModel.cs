@@ -23,6 +23,7 @@ public sealed class SettingsViewModel : INotifyPropertyChanged
     _opacity = s.Opacity;
     _mode = s.Mode;
     _autoStart = s.AutoStart;
+    _forcedEyeBreak = s.ForcedEyeBreak;
     _gammaIntensity = s.GammaIntensity;
     _enabled = s.Enabled;
   }
@@ -142,6 +143,21 @@ public sealed class SettingsViewModel : INotifyPropertyChanged
       _autoStart = value;
       _settings.Current.AutoStart = value;
       AutoStartService.SetEnabled(value);
+      _settings.Save();
+      OnPropertyChanged();
+    }
+  }
+
+  // ===== 20-20-20 Zorunlu mod =====
+  private bool _forcedEyeBreak;
+  public bool ForcedEyeBreak
+  {
+    get => _forcedEyeBreak;
+    set
+    {
+      if (_forcedEyeBreak == value) return;
+      _forcedEyeBreak = value;
+      _settings.Current.ForcedEyeBreak = value;
       _settings.Save();
       OnPropertyChanged();
     }

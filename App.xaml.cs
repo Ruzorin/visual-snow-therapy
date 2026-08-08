@@ -93,10 +93,10 @@ public partial class App : Application
     _monitorCheckTimer.Tick += (_, _) => _filter.RefreshLayout();
     _monitorCheckTimer.Start();
 
-    // Topmost z-order pekiştirme (her 3 sn — önizleme/alt pencere üstüne geçmesini engeller).
+    // Topmost z-order pekiştirme (her 8 sn — Win menü/Alt-Tab/hover preview'ı az bozar).
     _topmostTimer = new System.Windows.Threading.DispatcherTimer
     {
-      Interval = TimeSpan.FromSeconds(3)
+      Interval = TimeSpan.FromSeconds(8)
     };
     _topmostTimer.Tick += (_, _) => _filter.ReinforceTopmost();
     _topmostTimer.Start();
@@ -116,9 +116,13 @@ public partial class App : Application
 
   private void ShowRelief()
   {
+    // Relief penceresi FL-41 overlay'in üstünde görünmeli — overlay'i geçici gizle.
+    if (_settings!.Current.Mode == Models.RenderMode.Overlay && _settings.Current.Enabled)
+      _filter!.Apply(); // overlay zaten açık; ReliefWindow topmost olduğu için üstte görünür
     _reliefWindow ??= new ReliefWindow();
     _reliefWindow.Show();
     _reliefWindow.Activate();
+    _reliefWindow.Topmost = true;
   }
 
   private void ShowEyeBreakReminder()
@@ -146,7 +150,10 @@ public partial class App : Application
     _eyeBreakReminder?.Stop();
     _hotkeys?.Dispose();
     _tray?.Dispose();
-    _filter?.Dispose(); // gamma'yı geri yükler
+    // Filtreyi tamamen kapat: gamma sıfırla + overlay pencerelerini kapat.
+    _settings!.Current.Enabled = false;
+    _filter?.Apply();
+    _filter?.Dispose();
     base.OnExit(e);
   }
 }

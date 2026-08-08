@@ -59,6 +59,9 @@ public sealed class AppSettings
     /// <summary>Windows açılışında otomatik başlat.</summary>
     public bool AutoStart { get; set; } = false;
 
+    /// <summary>20-20-20 göz molası zorunlu (engelleme uyarısı, isteğe bağlı).</summary>
+    public bool ForcedEyeBreak { get; set; } = false;
+
     /// <summary>Gamma modu yoğunluğu 0.0-1.0 (gamma LUT kaydırma miktarı).</summary>
     public double GammaIntensity { get; set; } = 0.45;
 

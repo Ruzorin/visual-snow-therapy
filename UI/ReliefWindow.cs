@@ -1,6 +1,8 @@
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using VisualSnowScreen.Native;
 
 namespace VisualSnowScreen.UI;
 
@@ -27,6 +29,17 @@ public partial class ReliefWindow : Window
   {
     InitializeComponent();
     ShowTab("breath");
+    SourceInitialized += (_, _) => MakeWin32Topmost();
+  }
+
+  /// <summary>Win32 seviyesinde topmost yapar — overlay'in (WS_EX_TOPMOST) üstüne geçer.</summary>
+  private void MakeWin32Topmost()
+  {
+    var helper = new WindowInteropHelper(this);
+    if (helper.Handle == IntPtr.Zero) return;
+    NativeMethods.SetWindowPos(helper.Handle, NativeMethods.HWND_TOPMOST,
+        0, 0, 0, 0,
+        NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOSIZE | NativeMethods.SWP_NOACTIVATE);
   }
 
   private void Tab_Click(object sender, RoutedEventArgs e)

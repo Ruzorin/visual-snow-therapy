@@ -124,9 +124,17 @@ public static class LocalizationService
                         : c == AppCulture.German ? "Schließen"
                         : "Close",
         (_, "OpenRelief") => c == AppCulture.Turkish ? "Rahatlama araçlarını aç"
-                        : c == AppCulture.French ? "Ouvrir les outils de soulagement"
-                        : c == AppCulture.German ? "Linderungstools öffnen"
-                        : "Open relief tools",
+                      : c == AppCulture.French ? "Ouvrir les outils de soulagement"
+                      : c == AppCulture.German ? "Linderungstools öffnen"
+                      : "Open relief tools",
+        (_, "Language") => c == AppCulture.Turkish ? "Dil:"
+                      : c == AppCulture.French ? "Langue :"
+                      : c == AppCulture.German ? "Sprache:"
+                      : "Language:",
+        (_, "ForcedEyeBreak") => c == AppCulture.Turkish ? "20-20-20 zorunlu göz molası (engelleme uyarısı)"
+                      : c == AppCulture.French ? "Pause oculaire 20-20-20 obligatoire (rappel bloquant)"
+                      : c == AppCulture.German ? "20-20-20 Augenpause erzwingen (blockierende Erinnerung)"
+                      : "Force 20-20-20 eye break (blocking reminder)",
 
         // Presets
         (_, "IndoorName") => c == AppCulture.Turkish ? "Indoor FL-41"

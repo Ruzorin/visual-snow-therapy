@@ -57,7 +57,9 @@ public partial class SettingsWindow : Window
     LblGammaIntensity.Text = L("GammaIntensity");
     LblNightLightNote.Text = L("NightLightNote");
     ChkAutoStart.Content = L("AutoStart");
+    ChkForcedEyeBreak.Content = LocalizationService.S("ForcedEyeBreak");
     BtnOpenRelief.Content = L("OpenRelief");
+    LblLanguage.Text = LocalizationService.S("Language");
     LblHotkeys.Text = L("Hotkeys");
     LblHkToggle.Text = L("HkToggle");
     LblHkSettings.Text = L("HkSettings");
