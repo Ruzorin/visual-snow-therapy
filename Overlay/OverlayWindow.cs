@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using VisualSnowScreen.Native;
 using Color = System.Windows.Media.Color;
 
@@ -20,9 +22,20 @@ public partial class OverlayWindow : Window
 {
   private bool _clickThroughApplied;
 
+  // NORT Noise Variables
+  private WriteableBitmap? _noiseBitmap;
+  private int[]? _noisePixels;
+  private int _noiseWidth = 640;
+  private int _noiseHeight = 360;
+  private bool _isNoiseEnabled = false;
+  private int _renderWaitFrames = 0;
+  private static readonly Random _rnd = new Random();
+
   public OverlayWindow()
   {
     InitializeComponent();
+    RenderOptions.SetBitmapScalingMode(NoiseImage, BitmapScalingMode.NearestNeighbor);
+    CompositionTarget.Rendering += OnCompositionRendering;
   }
 
   /// <summary>FL-41 rengini ve opaklığı uygular. Tek seferlik güncelleme (animasyon yok).</summary>
@@ -31,6 +44,49 @@ public partial class OverlayWindow : Window
     var tinted = Color.FromArgb(alpha, color.R, color.G, color.B);
     TintBorder.Background = new SolidColorBrush(tinted);
     // Tek renk dolgu → GPU maliyeti ~sıfır, yeniden composite dışında render yok.
+  }
+
+  /// <summary>Smart Screen Filter gürültü katmanını açar/kapatır.</summary>
+  public void SetNoiseState(bool enabled, byte opacity = 7)
+  {
+    _isNoiseEnabled = enabled;
+    if (enabled)
+    {
+      NoiseImage.Visibility = Visibility.Visible;
+      NoiseImage.Opacity = opacity / 255.0; // %2-3 (max 255/100*x)
+      if (_noiseBitmap == null)
+      {
+        _noiseBitmap = new WriteableBitmap(_noiseWidth, _noiseHeight, 96, 96, PixelFormats.Bgra32, null);
+        _noisePixels = new int[_noiseWidth * _noiseHeight];
+        NoiseImage.Source = _noiseBitmap;
+      }
+    }
+    else
+    {
+      NoiseImage.Visibility = Visibility.Collapsed;
+    }
+  }
+
+  private void OnCompositionRendering(object? sender, EventArgs e)
+  {
+    if (!_isNoiseEnabled || _noiseBitmap == null || _noisePixels == null) return;
+
+    // Throttle FPS to ~30 (e.g. skip every other frame in a 60hz monitor)
+    if (++_renderWaitFrames % 2 != 0) return;
+
+    // Fill noise parallel
+    Parallel.For(0, _noiseHeight, y =>
+    {
+      int offset = y * _noiseWidth;
+      for (int x = 0; x < _noiseWidth; x++)
+      {
+        // Black & White Noise (A=255, R=rnd, G=rnd, B=rnd)
+        byte grain = (byte)Random.Shared.Next(0, 256);
+        _noisePixels[offset + x] = (255 << 24) | (grain << 16) | (grain << 8) | grain;
+      }
+    });
+
+    _noiseBitmap.WritePixels(new Int32Rect(0, 0, _noiseWidth, _noiseHeight), _noisePixels, _noiseWidth * 4, 0);
   }
 
   /// <summary>Pencereyi belirli monitör koordinatlarına yerleştirir (virtual screen).</summary>
@@ -97,6 +153,12 @@ public partial class OverlayWindow : Window
         | NativeMethods.WS_EX_NOACTIVATE);
     NativeMethods.SetWindowLongPtr(hwnd, NativeMethods.GWL_EXSTYLE, exStyle);
     _clickThroughApplied = true;
+  }
+
+  protected override void OnClosed(EventArgs e)
+  {
+    CompositionTarget.Rendering -= OnCompositionRendering;
+    base.OnClosed(e);
   }
 
   /// <summary>Topmost'u pekiştirir (bazı senaryolarda z-order kaybı olabiliyor).</summary>

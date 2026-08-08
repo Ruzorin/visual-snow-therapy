@@ -14,6 +14,11 @@
         RenderOptions.EdgeMode="Aliased"
         UseLayoutRounding="True"
         SnapsToDevicePixels="True">
-    <!-- Tek Border: FL-41 renkli yarı saydam dolgu. Statik, animasyon YOK (VSS güvenliği). -->
-    <Border x:Name="TintBorder" Background="#59E0A9AF" />
+    <Grid>
+        <!-- Gürültü Katmanı (WriteableBitmap) -->
+        <Image x:Name="NoiseImage" Stretch="Fill" IsHitTestVisible="False" SnapsToDevicePixels="True" Visibility="Collapsed" Opacity="0.03"/>
+        
+        <!-- Renk Katmanı -->
+        <Border x:Name="TintBorder" Background="#59E0A9AF" IsHitTestVisible="False"/>
+    </Grid>
 </Window>

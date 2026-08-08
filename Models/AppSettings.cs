@@ -62,6 +62,12 @@ public sealed class AppSettings
     /// <summary>20-20-20 göz molası zorunlu (engelleme uyarısı, isteğe bağlı).</summary>
     public bool ForcedEyeBreak { get; set; } = false;
 
+    /// <summary>Smart Screen Filter (Akıllı Kumlanma) aktif mi? Sadece Overlay modunda.</summary>
+    public bool SmartNoiseEnabled { get; set; } = false;
+
+    /// <summary>Akıllı Kumlanma Opaklığı (1-10 arası, varsayılan 3).</summary>
+    public int SmartNoiseOpacity { get; set; } = 3;
+
     /// <summary>Gamma modu yoğunluğu 0.0-1.0 (gamma LUT kaydırma miktarı).</summary>
     public double GammaIntensity { get; set; } = 0.45;
 

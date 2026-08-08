@@ -29,6 +29,12 @@ public sealed class OverlayWindowManager : IDisposable
       w.ApplyTint(color, alpha);
   }
 
+  public void SetNoiseState(bool enabled, byte opacity)
+  {
+    foreach (var w in _windows)
+      w.SetNoiseState(enabled, opacity);
+  }
+
   public void Show()
   {
     EnsureWindows();

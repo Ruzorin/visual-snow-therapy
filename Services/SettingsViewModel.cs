@@ -26,6 +26,8 @@ public sealed class SettingsViewModel : INotifyPropertyChanged
     _forcedEyeBreak = s.ForcedEyeBreak;
     _gammaIntensity = s.GammaIntensity;
     _enabled = s.Enabled;
+    _smartNoiseEnabled = s.SmartNoiseEnabled;
+    _smartNoiseOpacity = s.SmartNoiseOpacity;
   }
 
   // ===== FL-41 Preset'leri =====
@@ -159,6 +161,37 @@ public sealed class SettingsViewModel : INotifyPropertyChanged
       _forcedEyeBreak = value;
       _settings.Current.ForcedEyeBreak = value;
       _settings.Save();
+      OnPropertyChanged();
+    }
+  }
+
+  // ===== Akıllı Kumlanma =====
+  private bool _smartNoiseEnabled;
+  public bool SmartNoiseEnabled
+  {
+    get => _smartNoiseEnabled;
+    set
+    {
+      if (_smartNoiseEnabled == value) return;
+      _smartNoiseEnabled = value;
+      _settings.Current.SmartNoiseEnabled = value;
+      _settings.Save();
+      _filter.UpdateNoise();
+      OnPropertyChanged();
+    }
+  }
+
+  private int _smartNoiseOpacity;
+  public int SmartNoiseOpacity
+  {
+    get => _smartNoiseOpacity;
+    set
+    {
+      if (_smartNoiseOpacity == value) return;
+      _smartNoiseOpacity = value;
+      _settings.Current.SmartNoiseOpacity = value;
+      _settings.Save();
+      _filter.UpdateNoise();
       OnPropertyChanged();
     }
   }

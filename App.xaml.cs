@@ -25,8 +25,6 @@ public partial class App : Application
   private HotkeyService? _hotkeys;
   private SettingsWindow? _settingsWindow;
   private SettingsViewModel? _vm;
-  private ReliefWindow? _reliefWindow;
-
   // Gamma ramp sürücü reset'lerine karşı periyodik yenileme (her 30 sn).
   private System.Threading.Timer? _gammaRefreshTimer;
   // Monitör yapısı değişimlerini dinleme (overlay yeniden yerleşim) + topmost pekiştirme.
@@ -109,20 +107,17 @@ public partial class App : Application
   {
     if (_vm == null) return;
     _settingsWindow ??= new SettingsWindow(_vm);
-    _settingsWindow.ReliefRequested += ShowRelief;
     _settingsWindow.Show();
     _settingsWindow.Activate();
   }
 
   private void ShowRelief()
   {
-    // Relief penceresi FL-41 overlay'in üstünde görünmeli — overlay'i geçici gizle.
-    if (_settings!.Current.Mode == Models.RenderMode.Overlay && _settings.Current.Enabled)
-      _filter!.Apply(); // overlay zaten açık; ReliefWindow topmost olduğu için üstte görünür
-    _reliefWindow ??= new ReliefWindow();
-    _reliefWindow.Show();
-    _reliefWindow.Activate();
-    _reliefWindow.Topmost = true;
+    if (_vm == null) return;
+    _settingsWindow ??= new SettingsWindow(_vm);
+    _settingsWindow.ShowReliefPanel();
+    _settingsWindow.Show();
+    _settingsWindow.Activate();
   }
 
   private void ShowEyeBreakReminder()
@@ -135,10 +130,11 @@ public partial class App : Application
     _eyeBreakReminderShown = false;
     if (result == MessageBoxResult.OK)
     {
-      // Relief penceresini 20-20-20 sekmesinde aç.
-      _reliefWindow ??= new ReliefWindow();
-      _reliefWindow.Show();
-      _reliefWindow.Activate();
+      // Settings penceresini relief 20-20-20 sekmesinde aç.
+      _settingsWindow ??= new SettingsWindow(_vm!);
+      _settingsWindow.ShowReliefPanel("break");
+      _settingsWindow.Show();
+      _settingsWindow.Activate();
     }
   }
 

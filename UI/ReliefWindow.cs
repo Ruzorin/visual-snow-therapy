@@ -3,6 +3,7 @@ using System.Windows.Interop;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using VisualSnowScreen.Native;
+using VisualSnowScreen.Services;
 
 namespace VisualSnowScreen.UI;
 
@@ -28,8 +29,55 @@ public partial class ReliefWindow : Window
   public ReliefWindow()
   {
     InitializeComponent();
+    ApplyLocalization();
     ShowTab("breath");
     SourceInitialized += (_, _) => MakeWin32Topmost();
+  }
+
+  private void ApplyLocalization()
+  {
+    Title = LocalizationService.S("reliefTitle") ?? "Visual Snow — Rahatlama ve Farkındalık";
+    TxtHeaderTitle.Text = LocalizationService.S("reliefHeaderTitle") ?? "Rahatlama ve Farkındalık";
+    TxtHeaderSubtitle.Text = LocalizationService.S("reliefHeaderSubtitle") ?? "Visual Snow Syndrome için kanıt destekli rahatlama teknikleri";
+
+    BtnBreathing.Content = LocalizationService.S("reliefTabBreathing") ?? "4-7-8 Nefes";
+    BtnEyeBreak.Content = LocalizationService.S("reliefTabEyeBreak") ?? "20-20-20 Göz Molası";
+    BtnNort.Content = LocalizationService.S("reliefTabNort") ?? "NORT Egzersizi";
+    BtnHabituation.Content = LocalizationService.S("reliefTabHabituation") ?? "Alışma (Deneysel)";
+    BtnInfo.Content = LocalizationService.S("reliefTabInfo") ?? "Bilgi";
+
+    // Breathing
+    TxtBreathTitle.Text = LocalizationService.S("reliefBreathTitle") ?? "4-7-8 Nefes Tekniği";
+    TxtBreathDesc.Text = LocalizationService.S("reliefBreathDesc") ?? "Parasympatik sinir sistemini aktive eder, stresi ve fotofobiyi azaltır.";
+    BtnBreathStart.Content = LocalizationService.S("reliefBreathStart") ?? "Başlat (4 döngü)";
+    TxtBreathHint.Text = LocalizationService.S("reliefBreathHint") ?? "4 sn nefes al → 7 sn tut → 8 sn ver";
+    BreathPhase.Text = LocalizationService.S("reliefBreathReady") ?? "Hazır";
+
+    // Eye break
+    TxtBreakTitle.Text = LocalizationService.S("reliefBreakTitle") ?? "20-20-20 Kuralı";
+    TxtBreakDesc.Text = LocalizationService.S("reliefBreakDesc") ?? "Her 20 dakikada 20 sn boyunca 20 ft (6m) uzağa bak.";
+    BtnBreakStart.Content = LocalizationService.S("reliefBreakStart") ?? "Şimdi Göz Molası Ver";
+    TxtBreakHint.Text = LocalizationService.S("reliefBreakHint") ?? "Uzağa bakarken gözlerini kırpma — sakin, yumuşak bakış.";
+    TxtBreakSeconds.Text = LocalizationService.S("reliefBreakSeconds") ?? "saniye";
+
+    // NORT
+    TxtNortTitle.Text = LocalizationService.S("reliefNortTitle") ?? "NORT: Göz Takibi ve Sıçrama Egzersizleri";
+    BtnNortStart.Content = LocalizationService.S("reliefNortStart") ?? "NORT Egzersizini Başlat";
+
+    // Habituation
+    TxtHabitTitle.Text = LocalizationService.S("reliefHabitTitle") ?? "Alışma (Habituation) — Deneysel";
+    TxtHabitDuration.Text = LocalizationService.S("reliefHabitDuration") ?? "Süre seç:";
+    TxtHabitWarning.Text = LocalizationService.S("reliefHabitWarning") ?? "Uyarı: Bu deneysel bir tekniktir. Rahatsızlık artarsa hemen durdurun.";
+    BtnHabitStart.Content = LocalizationService.S("reliefHabitStart") ?? "Statik Ekranı Göster";
+
+    // Info
+    TxtInfoTitle.Text = LocalizationService.S("reliefInfoTitle") ?? "Visual Snow Syndrome Hakkında";
+    TxtInfoFl41Title.Text = LocalizationService.S("reliefInfoFl41Title") ?? "Fotofobi için FL-41";
+    TxtInfoTipsTitle.Text = LocalizationService.S("reliefInfoTipsTitle") ?? "Günlük Yönetim İpuçları";
+
+    // Sources
+    TxtSourceTitle.Text = LocalizationService.S("reliefSourcesTitle") ?? "Kaynaklar (resmi araştırma):";
+    TxtMedicalDisclaimer.Text = LocalizationService.S("reliefMedicalDisclaimer") ?? "Tıbbi tavsiye yerine geçmez. Semptomlar için nöro-oftalmoloğa başvurun.";
   }
 
   /// <summary>Win32 seviyesinde topmost yapar — overlay'in (WS_EX_TOPMOST) üstüne geçer.</summary>
@@ -52,6 +100,7 @@ public partial class ReliefWindow : Window
   {
     PanelBreathing.Visibility = tab == "breath" ? Visibility.Visible : Visibility.Collapsed;
     PanelEyeBreak.Visibility = tab == "break" ? Visibility.Visible : Visibility.Collapsed;
+    PanelNort.Visibility = tab == "nort" ? Visibility.Visible : Visibility.Collapsed;
     PanelHabituation.Visibility = tab == "habit" ? Visibility.Visible : Visibility.Collapsed;
     PanelInfo.Visibility = tab == "info" ? Visibility.Visible : Visibility.Collapsed;
 
@@ -60,6 +109,7 @@ public partial class ReliefWindow : Window
     var inactive = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0xA6, 0xAD, 0xC8));
     BtnBreathing.Foreground = tab == "breath" ? active : inactive;
     BtnEyeBreak.Foreground = tab == "break" ? active : inactive;
+    BtnNort.Foreground = tab == "nort" ? active : inactive;
     BtnHabituation.Foreground = tab == "habit" ? active : inactive;
     BtnInfo.Foreground = tab == "info" ? active : inactive;
   }
@@ -158,6 +208,17 @@ public partial class ReliefWindow : Window
       _breakTimer?.Stop();
       BreakCountdown.Text = "✓";
     }
+  }
+
+  // ===== NORT Therapy =====
+  private void Nort_Start(object sender, RoutedEventArgs e)
+  {
+    var nort = new NortTherapyWindow
+    {
+      Owner = this,
+      WindowStartupLocation = WindowStartupLocation.CenterOwner
+    };
+    nort.Show();
   }
 
   // ===== Habituation (deneysel) =====

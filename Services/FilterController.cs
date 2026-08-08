@@ -40,6 +40,10 @@ public sealed class FilterController : IDisposable
       case RenderMode.Overlay:
         _gamma.Restore();
         _overlay.ApplyTint(color, s.Opacity);
+
+        // Smart screen filter (noise) is safe-by-design here since it won't be active on Gamma
+        _overlay.SetNoiseState(s.SmartNoiseEnabled, (byte)(s.SmartNoiseOpacity * 2.55));
+
         _overlay.Show();
         break;
 
@@ -47,6 +51,20 @@ public sealed class FilterController : IDisposable
         _overlay.Hide();
         _gamma.Apply(s.GammaIntensity, color);
         break;
+    }
+  }
+
+  /// <summary>Akıllı kumlanma durumunu günceller.</summary>
+  public void UpdateNoise()
+  {
+    if (_settings.Current.Mode == RenderMode.Overlay && _settings.Current.Enabled)
+    {
+      var s = _settings.Current;
+
+      // Calculate opacity for rendering: mapping 1-10 slider to rough byte 5-25 range.
+      byte actualOpacity = (byte)(s.SmartNoiseOpacity * 2.55);
+
+      _overlay.SetNoiseState(s.SmartNoiseEnabled, actualOpacity);
     }
   }
 

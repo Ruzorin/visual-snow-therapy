@@ -161,6 +161,18 @@ public static class LocalizationService
       ("AutoStart", AppCulture.Spanish) => "Iniciar automáticamente con Windows",
       ("AutoStart", _) => "Start automatically with Windows",
 
+      ("SmartNoiseLabel", AppCulture.Turkish) => "Akıllı Ekran Filtresini Aç (VSS Alışkanlık Katmanı)",
+      ("SmartNoiseLabel", AppCulture.French) => "Activer le filtre d'écran intelligent (habituation VSS)",
+      ("SmartNoiseLabel", AppCulture.German) => "Smart Screen Filter aktivieren (VSS-Gewöhnung)",
+      ("SmartNoiseLabel", AppCulture.Spanish) => "Activar filtro de pantalla inteligente (habituación VSS)",
+      ("SmartNoiseLabel", _) => "Enable Smart Screen Filter (VSS Habituation)",
+
+      ("SmartNoiseWarning", AppCulture.Turkish) => "* Yorgunluğu önlemek için 15 dakika sonra güvenle kapatılır.",
+      ("SmartNoiseWarning", AppCulture.French) => "* Désactivé après 15 min pour éviter la fatigue.",
+      ("SmartNoiseWarning", AppCulture.German) => "* Wird nach 15 Min sicher deaktiviert, um Ermüdung zu vermeiden.",
+      ("SmartNoiseWarning", AppCulture.Spanish) => "* Se desactiva tras 15 min para prevenir fatiga.",
+      ("SmartNoiseWarning", _) => "* Disabled safely after 15 mins to prevent fatigue.",
+
       ("ForcedEyeBreak", AppCulture.Turkish) => "20-20-20 zorunlu göz molası (engelleme uyarısı)",
       ("ForcedEyeBreak", AppCulture.French) => "Pause oculaire 20-20-20 obligatoire (rappel bloquant)",
       ("ForcedEyeBreak", AppCulture.German) => "20-20-20 Augenpause erzwingen (blockierende Erinnerung)",
@@ -265,6 +277,156 @@ public static class LocalizationService
       ("EyeBreakMsg", AppCulture.German) => "20 Minuten vorbei!\n\nFür 20 Sekunden auf 20 Fuß (6m) schauen — Augen ausruhen.",
       ("EyeBreakMsg", AppCulture.Spanish) => "¡20 minutos pasados!\n\nDurante 20 segundos, mire a 20 pies (6m) — descanse sus ojos.",
       ("EyeBreakMsg", _) => "20 minutes passed!\n\nFor 20 seconds, look 20 ft (6m) away — rest your eyes.",
+
+      // ===== Relief Window =====
+      ("reliefTitle", AppCulture.Turkish) => "Visual Snow — Rahatlama ve Farkındalık",
+      ("reliefTitle", AppCulture.French) => "Visual Snow — Soulagement et Pleine Conscience",
+      ("reliefTitle", AppCulture.German) => "Visual Snow — Linderung und Achtsamkeit",
+      ("reliefTitle", AppCulture.Spanish) => "Visual Snow — Alivio y Conciencia",
+      ("reliefTitle", _) => "Visual Snow — Relief & Mindfulness",
+
+      ("reliefHeaderTitle", AppCulture.Turkish) => "Rahatlama ve Farkındalık",
+      ("reliefHeaderTitle", AppCulture.French) => "Soulagement et Pleine Conscience",
+      ("reliefHeaderTitle", AppCulture.German) => "Linderung und Achtsamkeit",
+      ("reliefHeaderTitle", AppCulture.Spanish) => "Alivio y Conciencia",
+      ("reliefHeaderTitle", _) => "Relief & Mindfulness",
+
+      ("reliefHeaderSubtitle", AppCulture.Turkish) => "Visual Snow Syndrome için kanıt destekli rahatlama teknikleri",
+      ("reliefHeaderSubtitle", AppCulture.French) => "Techniques de soulagement basées sur des preuves pour le syndrome Visual Snow",
+      ("reliefHeaderSubtitle", AppCulture.German) => "Evidenzbasierte Linderungstechniken für Visual Snow Syndrom",
+      ("reliefHeaderSubtitle", AppCulture.Spanish) => "Técnicas de alivio basadas en evidencia para el Síndrome de Visual Snow",
+      ("reliefHeaderSubtitle", _) => "Evidence-based relief techniques for Visual Snow Syndrome",
+
+      ("reliefTabBreathing", AppCulture.Turkish) => "4-7-8 Nefes",
+      ("reliefTabBreathing", _) => "4-7-8 Breathing",
+
+      ("reliefTabEyeBreak", AppCulture.Turkish) => "20-20-20 Göz Molası",
+      ("reliefTabEyeBreak", AppCulture.French) => "Pause oculaire 20-20-20",
+      ("reliefTabEyeBreak", AppCulture.German) => "20-20-20 Augenpause",
+      ("reliefTabEyeBreak", AppCulture.Spanish) => "Pausa ocular 20-20-20",
+      ("reliefTabEyeBreak", _) => "20-20-20 Eye Break",
+
+      ("reliefTabNort", AppCulture.Turkish) => "NORT Egzersizi",
+      ("reliefTabNort", _) => "NORT Exercise",
+
+      ("reliefTabHabituation", AppCulture.Turkish) => "Alışma (Deneysel)",
+      ("reliefTabHabituation", AppCulture.French) => "Habituation (Expérimental)",
+      ("reliefTabHabituation", AppCulture.German) => "Gewöhnung (Experimentell)",
+      ("reliefTabHabituation", AppCulture.Spanish) => "Habituación (Experimental)",
+      ("reliefTabHabituation", _) => "Habituation (Experimental)",
+
+      ("reliefTabInfo", AppCulture.Turkish) => "Bilgi",
+      ("reliefTabInfo", AppCulture.French) => "Infos",
+      ("reliefTabInfo", AppCulture.German) => "Info",
+      ("reliefTabInfo", AppCulture.Spanish) => "Info",
+      ("reliefTabInfo", _) => "Info",
+
+      ("reliefBreathTitle", AppCulture.Turkish) => "4-7-8 Nefes Tekniği",
+      ("reliefBreathTitle", _) => "4-7-8 Breathing Technique",
+
+      ("reliefBreathDesc", AppCulture.Turkish) => "Parasympatik sinir sistemini aktive eder, stresi ve fotofobiyi azaltır.",
+      ("reliefBreathDesc", _) => "Activates the parasympathetic nervous system, reduces stress and photophobia.",
+
+      ("reliefBreathStart", AppCulture.Turkish) => "Başlat (4 döngü)",
+      ("reliefBreathStart", _) => "Start (4 cycles)",
+
+      ("reliefBreathHint", AppCulture.Turkish) => "4 sn nefes al → 7 sn tut → 8 sn ver",
+      ("reliefBreathHint", _) => "4s inhale → 7s hold → 8s exhale",
+
+      ("reliefBreathReady", AppCulture.Turkish) => "Hazır",
+      ("reliefBreathReady", _) => "Ready",
+
+      ("reliefBreakTitle", AppCulture.Turkish) => "20-20-20 Kuralı",
+      ("reliefBreakTitle", _) => "20-20-20 Rule",
+
+      ("reliefBreakDesc", AppCulture.Turkish) => "Her 20 dakikada 20 sn boyunca 20 ft (6m) uzağa bak.",
+      ("reliefBreakDesc", _) => "Every 20 minutes, look 20 ft (6m) away for 20 seconds.",
+
+      ("reliefBreakStart", AppCulture.Turkish) => "Şimdi Göz Molası Ver",
+      ("reliefBreakStart", _) => "Take an Eye Break Now",
+
+      ("reliefBreakHint", AppCulture.Turkish) => "Uzağa bakarken gözlerini kırpma — sakin, yumuşak bakış.",
+      ("reliefBreakHint", _) => "Don't blink while looking away — calm, soft gaze.",
+
+      ("reliefBreakSeconds", AppCulture.Turkish) => "saniye",
+      ("reliefBreakSeconds", AppCulture.French) => "secondes",
+      ("reliefBreakSeconds", AppCulture.German) => "Sekunden",
+      ("reliefBreakSeconds", AppCulture.Spanish) => "segundos",
+      ("reliefBreakSeconds", _) => "seconds",
+
+      ("reliefNortTitle", AppCulture.Turkish) => "NORT: Göz Takibi ve Sıçrama Egzersizleri",
+      ("reliefNortTitle", _) => "NORT: Eye Tracking & Saccade Exercises",
+
+      ("reliefNortStart", AppCulture.Turkish) => "NORT Egzersizini Başlat",
+      ("reliefNortStart", _) => "Start NORT Exercise",
+
+      ("reliefHabitTitle", AppCulture.Turkish) => "Alışma (Habituation) — Deneysel",
+      ("reliefHabitTitle", _) => "Habituation — Experimental",
+
+      ("reliefHabitDuration", AppCulture.Turkish) => "Süre seç:",
+      ("reliefHabitDuration", AppCulture.French) => "Choisir la durée:",
+      ("reliefHabitDuration", AppCulture.German) => "Dauer wählen:",
+      ("reliefHabitDuration", AppCulture.Spanish) => "Elegir duración:",
+      ("reliefHabitDuration", _) => "Select duration:",
+
+      ("reliefHabitWarning", AppCulture.Turkish) => "Uyarı: Bu deneysel bir tekniktir. Rahatsızlık artarsa hemen durdurun.",
+      ("reliefHabitWarning", _) => "Warning: This is an experimental technique. Stop immediately if discomfort increases.",
+
+      ("reliefHabitStart", AppCulture.Turkish) => "Statik Ekranı Göster",
+      ("reliefHabitStart", _) => "Show Static Screen",
+
+      ("reliefInfoTitle", AppCulture.Turkish) => "Visual Snow Syndrome Hakkında",
+      ("reliefInfoTitle", _) => "About Visual Snow Syndrome",
+
+      ("reliefInfoFl41Title", AppCulture.Turkish) => "Fotofobi için FL-41",
+      ("reliefInfoFl41Title", _) => "FL-41 for Photophobia",
+
+      ("reliefInfoTipsTitle", AppCulture.Turkish) => "Günlük Yönetim İpuçları",
+      ("reliefInfoTipsTitle", _) => "Daily Management Tips",
+
+      ("reliefSourcesTitle", AppCulture.Turkish) => "Kaynaklar (resmi araştırma):",
+      ("reliefSourcesTitle", _) => "Sources (official research):",
+
+      ("reliefMedicalDisclaimer", AppCulture.Turkish) => "Tıbbi tavsiye yerine geçmez. Semptomlar için nöro-oftalmoloğa başvurun.",
+      ("reliefMedicalDisclaimer", _) => "Does not replace medical advice. Consult a neuro-ophthalmologist for symptoms.",
+
+      // ===== NORT Therapy Window =====
+      ("nortTitle", AppCulture.Turkish) => "Nöro-Optometrik Rehabilitasyon Terapisi",
+      ("nortTitle", _) => "Neuro-Optometric Rehabilitation Therapy",
+
+      ("nortDesc", AppCulture.Turkish) => "Bu egzersiz, Visual Snow Sendromundaki okülomotor disfonksiyonu hedefleyen bir NORT protokolüdür.",
+      ("nortDesc", _) => "This exercise is a NORT protocol targeting oculomotor dysfunction in Visual Snow Syndrome.",
+
+      ("nortTimeLeft", AppCulture.Turkish) => "Kalan Süre:",
+      ("nortTimeLeft", _) => "Time Left:",
+
+      ("nortAutoClose", AppCulture.Turkish) => "Egzersiz bittiğinde otomatik kapanır.",
+      ("nortAutoClose", _) => "The exercise closes automatically when finished.",
+
+      ("nortEsc", AppCulture.Turkish) => "Çıkmak için ESC'ye basın.",
+      ("nortEsc", _) => "Press ESC to exit.",
+
+      ("nortPursuitTitle", AppCulture.Turkish) => "Smooth Pursuit (Göz Takibi)",
+      ("nortPursuitTitle", _) => "Smooth Pursuit (Eye Tracking)",
+
+      ("nortSaccadeTitle", AppCulture.Turkish) => "Saccade Training (Sıçrama)",
+      ("nortSaccadeTitle", _) => "Saccade Training",
+
+      ("nortSaccadeDesc", AppCulture.Turkish) => "Hedef belirdiği an hızlıca gözlerinizi hedefe kilitleyin.",
+      ("nortSaccadeDesc", _) => "Lock your eyes onto the target as soon as it appears.",
+
+      ("nortDoneTitle", AppCulture.Turkish) => "Egzersiz Tamamlandı",
+      ("nortDoneTitle", _) => "Exercise Complete",
+
+      ("nortDoneDesc", AppCulture.Turkish) => "Göz ve beyin koordinasyonunuzu başarıyla çalıştırdınız. Nörolojik yorgunluk ve 'rebound' etkisini önlemek için seans güvenli bir şekilde sonlandırıldı.",
+      ("nortDoneDesc", _) => "You have successfully trained your eye-brain coordination. The session was safely ended to prevent neurological fatigue and rebound effects.",
+
+      // ===== Smart Noise Medical Warning =====
+      ("SmartNoiseMedicalWarning", AppCulture.Turkish) => "⚠ DİKKAT: Bu, projedeki bilimsel araştırmalarla faydası kanıtlanamamış ve olası yan etkileri bilinmeyen TEK özelliktir. Bu bilinçle kullanın.",
+      ("SmartNoiseMedicalWarning", AppCulture.French) => "⚠ ATTENTION: Il s'agit de la SEULE fonctionnalité du projet dont les bénéfices ne sont pas prouvés par la recherche scientifique et dont les effets secondaires sont inconnus. À utiliser avec prudence.",
+      ("SmartNoiseMedicalWarning", AppCulture.German) => "⚠ ACHTUNG: Dies ist die EINZIGE Funktion im Projekt, deren Nutzen nicht durch wissenschaftliche Forschung belegt ist und deren Nebenwirkungen unbekannt sind. Mit Vorsicht verwenden.",
+      ("SmartNoiseMedicalWarning", AppCulture.Spanish) => "⚠ ATENCIÓN: Esta es la ÚNICA función del proyecto cuyos beneficios no están probados por la investigación científica y cuyos efectos secundarios son desconocidos. Úsela con precaución.",
+      ("SmartNoiseMedicalWarning", _) => "⚠ WARNING: This is the ONLY feature in the project whose benefits are unproven by scientific research and whose side effects are unknown. Use with caution.",
 
       _ => key
     };

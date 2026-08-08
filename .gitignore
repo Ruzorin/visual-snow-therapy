@@ -8,8 +8,8 @@ obj/
 *.user
 *.suo
 
-# Publish
-publish/
+# Publish (derlenmiş exe'yi repo'da tutmak için kaldırıldı)
+# publish/
 *.publishsettings
 
 # Logs
