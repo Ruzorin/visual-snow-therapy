@@ -1,0 +1,21 @@
+# .NET build output
+bin/
+obj/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Publish
+publish/
+*.publishsettings
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store

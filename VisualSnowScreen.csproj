@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>VisualSnowScreen</AssemblyName>
+    <RootNamespace>VisualSnowScreen</RootNamespace>
+    <Version>1.0.0</Version>
+    <Company>VisualSnowScreen</Company>
+    <Product>Visual Snow FL-41 Screen Filter</Product>
+    <!-- Single-file publish friendly; trim unused for smaller footprint -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!-- WPF DPI manifest yolu kullanılıyor; WinForms WFAC010 önerisini bastır -->
+    <NoWarn>$(NoWarn);WFAC010</NoWarn>
+  </PropertyGroup>
+
+</Project>

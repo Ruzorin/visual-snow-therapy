@@ -1,0 +1,19 @@
+<Window x:Class="VisualSnowScreen.Overlay.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VisualSnowOverlay"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        ResizeMode="NoResize"
+        IsHitTestVisible="False"
+        Focusable="False"
+        Background="Transparent"
+        RenderOptions.EdgeMode="Aliased"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+    <!-- Tek Border: FL-41 renkli yarı saydam dolgu. Statik, animasyon YOK (VSS güvenliği). -->
+    <Border x:Name="TintBorder" Background="#59E0A9AF" />
+</Window>
