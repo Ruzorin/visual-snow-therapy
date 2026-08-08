@@ -40,13 +40,7 @@ public partial class SettingsWindow : Window
   {
     var L = LocalizationService.S;
     Title = L("SettingsTitle");
-    LblSubtitle.Text = LocalizationService.Current == LocalizationService.AppCulture.Turkish
-        ? "480-520nm mavi-yeşil blokajı · rose-amber"
-        : LocalizationService.Current == LocalizationService.AppCulture.French
-        ? "Bloc bleu-vert 480-520nm · rose-ambre"
-        : LocalizationService.Current == LocalizationService.AppCulture.German
-        ? "Blau-Grün-Block 480-520nm · Rose-Bernstein"
-        : "480-520nm blue-green block · rose-amber";
+    LblSubtitle.Text = L("Subtitle");
 
     ChkEnabled.Content = L("FilterActive");
     LblRenderMode.Text = L("RenderMode");
@@ -58,7 +52,7 @@ public partial class SettingsWindow : Window
     LblNightLightNote.Text = L("NightLightNote");
     ChkAutoStart.Content = L("AutoStart");
     ChkForcedEyeBreak.Content = LocalizationService.S("ForcedEyeBreak");
-    BtnOpenRelief.Content = L("OpenRelief");
+    BtnReliefText.Text = L("OpenRelief");
     LblLanguage.Text = LocalizationService.S("Language");
     LblHotkeys.Text = L("Hotkeys");
     LblHkToggle.Text = L("HkToggle");

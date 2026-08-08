@@ -126,4 +126,10 @@ internal static class NativeMethods
 
   public const int MONITORINFOF_PRIMARY = 0x00000001;
   public const int MONITOR_DEFAULTTONEAREST = 0x00000002;
+
+  // GetWindow constants
+  public const int GW_OWNER = 4;
+
+  [DllImport("user32.dll", SetLastError = true)]
+  public static extern IntPtr GetWindow(IntPtr hWnd, int uCmd);
 }

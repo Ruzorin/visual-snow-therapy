@@ -18,7 +18,34 @@
         <Style TargetType="CheckBox">
             <Setter Property="Foreground" Value="#CDD6F4"/>
             <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,8,0,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Border x:Name="checkBoxBorder" Width="26" Height="26" CornerRadius="5"
+                                    Background="#313244" BorderBrush="#45475A" BorderThickness="2"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock x:Name="checkMark" Text="✓" FontSize="18" FontWeight="Bold"
+                                           Foreground="#A6E3A1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Visibility="Collapsed"/>
+                            </Border>
+                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkMark" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#A6E3A1"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#CBA6F7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="RadioButton">
             <Setter Property="Foreground" Value="#CDD6F4"/>
@@ -136,22 +163,30 @@
             <!-- 20-20-20 zorunlu mod -->
             <CheckBox Grid.Row="7" x:Name="ChkForcedEyeBreak" Content="Force 20-20-20 eye break (blocking reminder)" IsChecked="{Binding ForcedEyeBreak}" Margin="0,0,0,20"/>
 
-            <!-- Relief erişim butonu + Dil seçici -->
-            <DockPanel Grid.Row="8" Margin="0,0,0,20">
-                <Button x:Name="BtnOpenRelief" Style="{StaticResource ActionBtn}" Content="Open relief tools" Click="OpenRelief_Click" DockPanel.Dock="Left" Width="240"/>
-                <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <TextBlock x:Name="LblLanguage" Text="Language:" VerticalAlignment="Center" Margin="0,0,8,0" FontSize="13"/>
-                    <ComboBox x:Name="CmbLanguage" Width="120" Background="#313244" Foreground="#CDD6F4" SelectionChanged="Language_Changed">
-                        <ComboBoxItem Content="English" Tag="English"/>
-                        <ComboBoxItem Content="Français" Tag="French"/>
-                        <ComboBoxItem Content="Deutsch" Tag="German"/>
-                        <ComboBoxItem Content="Türkçe" Tag="Turkish"/>
-                    </ComboBox>
+            <!-- Relief erişim butonu — BÜYÜK, ORTADA, DİKKAT ÇEKİCİ -->
+            <Button Grid.Row="8" x:Name="BtnOpenRelief" Click="OpenRelief_Click" Margin="0,0,0,16"
+                    HorizontalAlignment="Stretch" Padding="0,18" FontSize="17" FontWeight="Bold"
+                    Background="#CBA6F7" Foreground="#1E1E2E" BorderThickness="0" Cursor="Hand">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="🧘 " FontSize="22" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="BtnReliefText" Text="OPEN RELIEF TOOLS" VerticalAlignment="Center"/>
                 </StackPanel>
-            </DockPanel>
+            </Button>
+
+            <!-- Dil seçici -->
+            <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,20">
+                <TextBlock x:Name="LblLanguage" Text="Language:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="14"/>
+                <ComboBox x:Name="CmbLanguage" Width="140" Background="#313244" Foreground="#CDD6F4" FontSize="14" SelectionChanged="Language_Changed">
+                    <ComboBoxItem Content="English" Tag="English"/>
+                    <ComboBoxItem Content="Français" Tag="French"/>
+                    <ComboBoxItem Content="Deutsch" Tag="German"/>
+                    <ComboBoxItem Content="Türkçe" Tag="Turkish"/>
+                    <ComboBoxItem Content="Español" Tag="Spanish"/>
+                </ComboBox>
+            </StackPanel>
 
             <!-- Kısayollar -->
-            <Border Grid.Row="9" Background="#313244" CornerRadius="8" Padding="16" Margin="0,0,0,16">
+            <Border Grid.Row="10" Background="#313244" CornerRadius="8" Padding="16" Margin="0,0,0,16">
                 <StackPanel>
                     <TextBlock x:Name="LblHotkeys" Style="{StaticResource SectionHeader}" Text="Hotkeys"/>
                     <TextBlock x:Name="LblHkToggle" Text="Ctrl+Alt+F  —  Toggle filter" FontSize="12" Margin="0,3,0,0"/>
@@ -162,7 +197,7 @@
             </Border>
 
             <!-- Kapat -->
-            <Button Grid.Row="10" x:Name="BtnClose" Content="Close" Padding="0,10" HorizontalAlignment="Stretch" Click="Close_Click"
+            <Button Grid.Row="11" x:Name="BtnClose" Content="Close" Padding="0,10" HorizontalAlignment="Stretch" Click="Close_Click"
                     Background="#313244" Foreground="#CDD6F4" BorderBrush="#45475A" FontSize="14"/>
         </Grid>
     </ScrollViewer>

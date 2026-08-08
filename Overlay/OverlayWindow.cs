@@ -46,7 +46,40 @@ public partial class OverlayWindow : Window
   {
     base.OnSourceInitialized(e);
     ApplyClickThrough();
+    MakeOwnerTopmost();
     ReinforceTopmost();
+    // WM_ACTIVATE hook: foreground değişiminde hemen topmost'u pekiştir.
+    var src = HwndSource.FromHwnd(new WindowInteropHelper(this).Handle);
+    src?.AddHook(WndProc);
+  }
+
+  private void MakeOwnerTopmost()
+  {
+    // WPF ShowInTaskbar=False gizli owner penceresi oluşturur; onu da topmost yap.
+    var hwnd = new WindowInteropHelper(this).Handle;
+    if (hwnd == IntPtr.Zero) return;
+    var owner = NativeMethods.GetWindow(hwnd, NativeMethods.GW_OWNER);
+    if (owner != IntPtr.Zero)
+    {
+      NativeMethods.SetWindowPos(owner, NativeMethods.HWND_TOPMOST,
+          0, 0, 0, 0,
+          NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOSIZE | NativeMethods.SWP_NOACTIVATE);
+    }
+  }
+
+  private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+  {
+    // WM_ACTIVATE: foreground değişince topmost'u hemen pekiştir.
+    if (msg == 0x0006) // WM_ACTIVATE
+    {
+      ReinforceTopmost();
+    }
+    // WM_WINDOWPOSCHANGING: başka pencere z-order'ı değiştirmeye çalışırsa.
+    if (msg == 0x0046) // WM_WINDOWPOSCHANGING
+    {
+      ReinforceTopmost();
+    }
+    return IntPtr.Zero;
   }
 
   /// <summary>HWND'ye click-through + toolwindow + noactivate extended stillerini ekler.</summary>
